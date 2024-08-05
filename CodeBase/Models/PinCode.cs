@@ -1,8 +1,15 @@
-﻿namespace CodeBase.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace CodeBase.Models
 {
     public class PinCode
     {
-        public string? getEmailCode { get; set; }
-        public string? enterPhoneCode { get; private set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long Id { get; set; }
+        public string? GetEmailCode { get; set; }
+        public string? EnterPhoneCode { get; private set; }
+        public virtual CreateAccount? CreateAccount { get; set; }
     }
 }
