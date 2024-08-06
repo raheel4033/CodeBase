@@ -4,8 +4,8 @@ namespace CodeBase.IRepositories
 {
     public interface IPinCodeRepository
     {
-        void AddEmailCode(PinCode pinCode);
+        Task AddEmailCode(PinCode pinCode);
         void UpdateEmailCode(PinCode pinCode);
-        void DeleteCode(long id);
+        Task DeleteCode(long id);
     }
 }

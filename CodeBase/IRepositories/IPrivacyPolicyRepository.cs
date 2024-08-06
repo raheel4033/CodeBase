@@ -4,6 +4,6 @@ namespace CodeBase.IRepositories
 {
     public interface IPrivacyPolicyRepository
     {
-        void AcceptAggrement(PrivacyPolicy privacyPolicy);
+        Task AcceptAggrement(PrivacyPolicy privacyPolicy);
     }
 }

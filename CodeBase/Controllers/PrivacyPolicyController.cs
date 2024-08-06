@@ -16,11 +16,11 @@ namespace CodeBase.Controllers
         }
         [HttpPost]
         [Route("postbool")]
-        public IActionResult AcceptAggrement(PrivacyPolicy privacyPolicy)
+        public async Task<IActionResult> AcceptAggrement(PrivacyPolicy privacyPolicy)
         {
             if (privacyPolicy.AgreeToTermsAndConditions)
             {
-                _privacyPolicyService.AcceptAggrementService(privacyPolicy);
+                await _privacyPolicyService.AcceptAggrementService(privacyPolicy);
                 return Ok("Return Accepted");
             }
             else

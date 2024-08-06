@@ -12,17 +12,17 @@ namespace CodeBase.Services
         {
                 _pinCodeRepository = pinCodeRepository;
         }
-        public void AddEmailCodeService(PinCode pinCode)
+        public async Task AddEmailCodeService(PinCode pinCode)
         {
-            _pinCodeRepository.AddEmailCode(pinCode);
+            await _pinCodeRepository.AddEmailCode(pinCode);
         }
         public void UpdateEmailCodeService(PinCode pinCode)
         {
             _pinCodeRepository.UpdateEmailCode(pinCode);
         }
-        public void DeleteCodeService(long id)
+        public async Task DeleteCodeService(long id)
         {
-            _pinCodeRepository.DeleteCode(id);
+            await _pinCodeRepository.DeleteCode(id);
         }
         public string GeneratePhoneCode(PinCode pinCode)
         {

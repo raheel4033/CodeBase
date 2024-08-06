@@ -18,12 +18,12 @@ namespace CodeBase.Controllers
             _pinCodeService = pinCodeService;
         }
         [HttpPost]
-        public IActionResult AddEmailPin(PinCode pinCode)
+        public async Task<IActionResult> AddEmailPin(PinCode pinCode)
         {
             //WE SHOULD USE CUSTOM EXCEPTIONS INSTEAD OF TRY CATCH
             try
             {
-                _pinCodeService.AddEmailCodeService(pinCode);
+                await _pinCodeService.AddEmailCodeService(pinCode);
                 return CreatedAtAction("EmailCodeAdded", pinCode);
             }
             catch (InvalidOperationException ex)
@@ -50,12 +50,12 @@ namespace CodeBase.Controllers
             }
         }
         [HttpDelete("{id}")]
-        public IActionResult DeleteAccount(long id)
+        public async Task<IActionResult> DeleteAccount(long id)
         {
             //WE SHOULD USE CUSTOM EXCEPTIONS INSTEAD OF TRY CATCH
             try
             {
-                _pinCodeService.DeleteCodeService(id);
+                await _pinCodeService.DeleteCodeService(id);
                 return NoContent();
             }
             catch (Exception ex)

@@ -16,15 +16,12 @@ namespace CodeBase.Repositories
             _createAccount = _context.Set<CreateAccount>();
 
         }
-        public CreateAccount GetByNIC(long id)
-        {
-            return _createAccount.Find(id);
-        }
+        public async Task<CreateAccount?> GetByNIC(long id) => await _createAccount.FindAsync(id);
 
-        public IEnumerable<CreateAccount> GetAll() => _createAccount.ToList();
-        public void Add(CreateAccount createAccount)
+        public async Task<IEnumerable<CreateAccount>> GetAll() => await _createAccount.ToListAsync();
+        public async Task Add(CreateAccount createAccount)
         {
-            _createAccount.Add(createAccount);
+            await _createAccount.AddAsync(createAccount);
             _context.SaveChanges();
         }
         public void Update(CreateAccount updateAccount)
@@ -32,9 +29,9 @@ namespace CodeBase.Repositories
             _createAccount.Update(updateAccount);
             _context.SaveChanges();
         }
-        public void Delete(long id)
+        public async Task Delete(long id)
         {
-            var createAccount = _createAccount.Find(id);
+            var createAccount = await _createAccount.FindAsync(id);
             if (createAccount != null)
             {
                 _createAccount.Remove(createAccount);

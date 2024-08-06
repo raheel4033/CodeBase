@@ -4,10 +4,10 @@ namespace CodeBase.IRepositories
 {
     public interface ICreateAccountRepository
     {
-        CreateAccount GetByNIC(long id);
-        IEnumerable<CreateAccount> GetAll();
-        void Add(CreateAccount createAccount);
+        Task<CreateAccount?> GetByNIC(long id);
+        Task<IEnumerable<CreateAccount>> GetAll();
+        Task Add(CreateAccount createAccount);
         void Update(CreateAccount updateAccount);
-        void Delete(long id);
+        Task Delete(long id);
     }
 }
