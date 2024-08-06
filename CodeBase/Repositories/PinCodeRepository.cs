@@ -16,9 +16,9 @@ namespace CodeBase.Repositories
             _pinCode = _context.Set<PinCode>();
             
         }
-        public void AddEmailCode(PinCode pinCode)
+        public async Task AddEmailCode(PinCode pinCode)
         {
-            _pinCode.Add(pinCode);
+            await _pinCode.AddAsync(pinCode);
             _context.SaveChanges();
         }
         public void UpdateEmailCode(PinCode pinCode)
@@ -26,9 +26,9 @@ namespace CodeBase.Repositories
             _pinCode.Update(pinCode);
             _context.SaveChanges();
         }
-        public void DeleteCode(long id)
+        public async Task DeleteCode(long id)
         {
-            var codes = _pinCode.Find(id);
+            var codes = await _pinCode.FindAsync(id);
             if (codes != null)
             {
                 _pinCode.Remove(codes);

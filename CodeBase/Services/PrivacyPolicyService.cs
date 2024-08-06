@@ -12,11 +12,11 @@ namespace CodeBase.Services
                 _privacyPolicyRepository = privacyPolicyRepository;
         }
 
-        public void AcceptAggrementService(PrivacyPolicy privacyPolicy)
+        public async Task AcceptAggrementService(PrivacyPolicy privacyPolicy)
         {
             if (privacyPolicy.AgreeToTermsAndConditions == true)
             {
-                _privacyPolicyRepository.AcceptAggrement(privacyPolicy);
+                await _privacyPolicyRepository.AcceptAggrement(privacyPolicy);
             }
         }
 

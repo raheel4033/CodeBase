@@ -4,10 +4,10 @@ namespace CodeBase.IServices
 {
     public interface ICreateAccountService
     {
-        CreateAccount GetByNICService(long id);
-        IEnumerable<CreateAccount> GetAllService();
-        void AddService(CreateAccount createAccount);
+        Task<CreateAccount?> GetByNICService(long id);
+        Task<IEnumerable<CreateAccount>> GetAllService();
+        Task AddService(CreateAccount createAccount);
         void UpdateService(CreateAccount updateAccount);
-        void DeleteService(long id);
+        Task DeleteService(long id);
     }
 }

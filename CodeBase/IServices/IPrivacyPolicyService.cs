@@ -4,6 +4,6 @@ namespace CodeBase.IServices
 {
     public interface IPrivacyPolicyService
     {
-        void AcceptAggrementService(PrivacyPolicy privacyPolicy);
+        Task AcceptAggrementService(PrivacyPolicy privacyPolicy);
     }
 }

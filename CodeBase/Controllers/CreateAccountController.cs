@@ -16,12 +16,12 @@ namespace CodeBase.Controllers
             _createAccountService = createAccountService;
         }
         [HttpGet]
-        public IActionResult GetAllAccounts(CreateAccount createAccount)
+        public async Task<IActionResult> GetAllAccounts()
         {
             //WE SHOULD USE CUSTOM EXCEPTIONS INSTEAD OF TRY CATCH
             try
             {
-                var accounts = _createAccountService.GetAllService();
+                var accounts = await _createAccountService.GetAllService();
                 return Ok(accounts);
             }
             catch (Exception ex)
@@ -30,12 +30,12 @@ namespace CodeBase.Controllers
             }
         }
         [HttpGet("{id}")]
-        public IActionResult GetAccountByNIC(long id) 
+        public async Task<IActionResult> GetAccountByNIC(long id) 
         {
             //WE SHOULD USE CUSTOM EXCEPTIONS INSTEAD OF TRY CATCH
             try
             {
-                var account = _createAccountService.GetByNICService(id);
+                var account = await _createAccountService.GetByNICService(id);
                 return Ok(account);
             }
             catch (InvalidOperationException ex)
@@ -49,12 +49,12 @@ namespace CodeBase.Controllers
         
         }
         [HttpPost]
-        public IActionResult CreateRegisterAccount(CreateAccount createAccount)
+        public async Task<IActionResult> CreateRegisterAccount(CreateAccount createAccount)
         {
             //WE SHOULD USE CUSTOM EXCEPTIONS INSTEAD OF TRY CATCH
             try
             {
-                _createAccountService.AddService(createAccount);
+                await _createAccountService.AddService(createAccount);
                 return CreatedAtAction(nameof(GetAccountByNIC), new { id = createAccount.NicNumber }, createAccount);
             }
             catch (InvalidOperationException ex)
@@ -81,12 +81,12 @@ namespace CodeBase.Controllers
             }
         }
         [HttpDelete("{id}")]
-        public IActionResult DeleteAccount(long id) 
+        public async Task<IActionResult> DeleteAccount(long id) 
         {
             //WE SHOULD USE CUSTOM EXCEPTIONS INSTEAD OF TRY CATCH
             try
             {
-                _createAccountService.DeleteService(id);
+                await _createAccountService.DeleteService(id);
                 return NoContent();
             }
             catch(Exception ex)

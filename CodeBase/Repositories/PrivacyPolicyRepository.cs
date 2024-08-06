@@ -16,9 +16,9 @@ namespace CodeBase.Repositories
             privacyPolicies = _context.Set<PrivacyPolicy>();
 
         }
-        public void AcceptAggrement(PrivacyPolicy privacyPolicy)
+        public async Task AcceptAggrement(PrivacyPolicy privacyPolicy)
         {
-            privacyPolicies.Add(privacyPolicy);
+            await privacyPolicies.AddAsync(privacyPolicy);
         }
 
     }
