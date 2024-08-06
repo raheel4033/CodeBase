@@ -1,4 +1,8 @@
 using CodeBase.DbContextModelling;
+using CodeBase.IRepositories;
+using CodeBase.IServices;
+using CodeBase.Repositories;
+using CodeBase.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +15,15 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MyDbContext>(o =>
         o.UseSqlServer(builder.Configuration.GetConnectionString("DBAPP")));
+
+builder.Services.AddScoped<ICreateAccountRepository, CreateAccountRepository>();
+builder.Services.AddScoped<IPinCodeRepository, PinCodeRepository>();
+builder.Services.AddScoped<IPrivacyPolicyRepository, PrivacyPolicyRepository>();
+builder.Services.AddScoped<ICreateAccountService, CreateAccountService>();
+builder.Services.AddScoped<IPinCodeService, PinCodeService>();
+builder.Services.AddScoped<IPrivacyPolicyService, PrivacyPolicyService>();
+
+
 
 var app = builder.Build();
 

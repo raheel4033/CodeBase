@@ -1,9 +1,10 @@
 ﻿using CodeBase.IRepositories;
+using CodeBase.IServices;
 using CodeBase.Models;
 
 namespace CodeBase.Services
 {
-    public class PrivacyPolicyService
+    public class PrivacyPolicyService :IPrivacyPolicyService
     {
         private readonly IPrivacyPolicyRepository _privacyPolicyRepository;
         public PrivacyPolicyService(IPrivacyPolicyRepository privacyPolicyRepository)
